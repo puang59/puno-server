@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@langchain/openai": "^0.0.20",
+    "@langchain/pinecone": "^0.0.3",
+    "@pinecone-database/pinecone": "^2.1.0",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.30.2",
     "langchain": "^0.1.28",
