@@ -7,11 +7,16 @@
     "preview": "node .output/server/index.mjs"
   },
   "devDependencies": {
+    "drizzle-kit": "^0.20.14",
     "nitropack": "latest"
   },
   "dependencies": {
     "@langchain/openai": "^0.0.20",
-    "langchain": "^0.1.28"
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.30.2",
+    "langchain": "^0.1.28",
+    "pg": "^8.11.3",
+    "postgres": "^3.4.3"
   },
   "pnpm": {
     "overrides": {
