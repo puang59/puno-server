@@ -16,7 +16,8 @@
     "drizzle-orm": "^0.30.2",
     "langchain": "^0.1.28",
     "pg": "^8.11.3",
-    "postgres": "^3.4.3"
+    "postgres": "^3.4.3",
+    "zod": "^3.22.4"
   },
   "pnpm": {
     "overrides": {
