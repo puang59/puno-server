@@ -10,7 +10,7 @@ import {
 
 export const roleEnum = pgEnum("role", ["system", "user"]);
 
-export const entries = pgTable("messages", {
+export const entries = pgTable("entries", {
   id: serial("id").primaryKey(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   userId: varchar("user_id", { length: 256 }).notNull(),
