@@ -8,5 +8,14 @@
   },
   "devDependencies": {
     "nitropack": "latest"
+  },
+  "dependencies": {
+    "@langchain/openai": "^0.0.20",
+    "langchain": "^0.1.28"
+  },
+  "pnpm": {
+    "overrides": {
+      "@langchain/core": "^0.1.47"
+    }
   }
 }
