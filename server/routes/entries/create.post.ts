@@ -1,3 +1,7 @@
+import { OpenAIEmbeddings } from "@langchain/openai";
+import { PineconeStore } from "@langchain/pinecone";
+import { Pinecone } from "@pinecone-database/pinecone";
+import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { z } from "zod";
 
 export default eventHandler(async (event) => {
@@ -19,4 +23,27 @@ export default eventHandler(async (event) => {
   }
 
   const { content, userId } = parsedBodyResult.data;
+
+  const splitter = RecursiveCharacterTextSplitter.fromLanguage("markdown", {
+    chunkSize: 500,
+    chunkOverlap: 0,
+  });
+
+  const docs = await splitter.createDocuments([content]);
+  const embeddings = new OpenAIEmbeddings({
+    modelName: "text-embedding-3-large",
+  });
+
+  const pinecone = new Pinecone();
+  const pineconeIndex = pinecone.index("puno");
+
+  await PineconeStore.fromDocuments(docs, embeddings, {
+    pineconeIndex,
+    namespace: userId,
+    maxConcurrency: 5,
+  });
+
+  return {
+    status: 200,
+  };
 });
