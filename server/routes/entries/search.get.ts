@@ -41,7 +41,7 @@ export default defineEventHandler(async (event) => {
   });
 
   const prompt =
-    ChatPromptTemplate.fromTemplate(`Imagine you are a search engine that gives it's output in natural language. You answer questions concisely and are direct to the point. While answering the quesiton, address the user by using "you". Answer the following question based only on the provided context:
+    ChatPromptTemplate.fromTemplate(`Imagine you are a search engine that gives it's output in natural language. You answer questions concisely and are direct to the point. While answering the quesiton, address the user or the speaker by using "you". Answer the following question based only on the provided context:
   <context>
   {context}
   </context>
