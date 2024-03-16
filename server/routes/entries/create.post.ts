@@ -7,7 +7,6 @@ import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { z } from "zod";
 import { db } from "../../db";
 import { notes } from "../../db/schema";
-import { InferSelectModel } from "drizzle-orm";
 
 export default eventHandler(async (event) => {
   const bodySchema = z.object({
