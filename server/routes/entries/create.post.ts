@@ -70,12 +70,11 @@ export default eventHandler(async (event) => {
       [content],
       [{ noteId: noteId[0].id }]
     );
-    const embeddings = new OpenAIEmbeddings({
-      modelName: "text-embedding-3-large",
-    });
+
+    const embeddings = new OpenAIEmbeddings();
 
     const pinecone = new Pinecone();
-    const pineconeIndex = pinecone.index("puno");
+    const pineconeIndex = pinecone.index("puno-lol");
 
     await PineconeStore.fromDocuments(docs, embeddings, {
       pineconeIndex,
