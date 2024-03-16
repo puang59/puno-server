@@ -59,26 +59,6 @@ export default defineEventHandler(async (event) => {
 
   const res = await retrievalChain.invoke({ input: query });
 
-  // const output = {};
-  // let currentKey: string | null = null;
-
-  // for await (const chunk of await retrievalChain.stream({ input: query })) {
-  //   for (const key of Object.keys(chunk)) {
-  //     if (output[key] === undefined) {
-  //       output[key] = chunk[key];
-  //     } else {
-  //       output[key] += chunk[key];
-  //     }
-
-  //     if (key !== currentKey) {
-  //       console.log(`\n\n${key}: ${JSON.stringify(chunk[key])}`);
-  //     } else {
-  //       console.log(chunk[key]);
-  //     }
-  //     currentKey = key;
-  //   }
-  // }
-
   return {
     status: 200,
     answer: res.answer,
