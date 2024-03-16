@@ -5,7 +5,7 @@ import { eq } from "drizzle-orm";
 
 export default eventHandler(async (event) => {
   const bodySchema = z.object({
-    id: z.string().min(1),
+    id: z.number(),
   });
 
   const result = await readBody(event).catch(() => null);
@@ -22,5 +22,5 @@ export default eventHandler(async (event) => {
 
   const { id } = parsedBodyResult.data;
 
-  await db.delete(todos).where(eq(todos.id, parseInt(id, 10)));
+  await db.delete(todos).where(eq(todos.id, id));
 });
