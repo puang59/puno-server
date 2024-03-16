@@ -57,7 +57,7 @@ export default defineEventHandler(async (event) => {
     retriever,
   });
 
-  const hi = await retrievalChain.invoke({ input: query });
+  const res = await retrievalChain.invoke({ input: query });
 
   // const output = {};
   // let currentKey: string | null = null;
@@ -81,6 +81,6 @@ export default defineEventHandler(async (event) => {
 
   return {
     status: 200,
-    hi,
+    answer: res.answer,
   };
 });
