@@ -6,7 +6,7 @@ import { StringOutputParser } from "@langchain/core/output_parsers";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { z } from "zod";
 import { db } from "../../db";
-import { notes } from "../../db/schema";
+import { notes, todos } from "../../db/schema";
 
 export default eventHandler(async (event) => {
   const bodySchema = z.object({
@@ -52,13 +52,13 @@ export default eventHandler(async (event) => {
 
   if (todo === "yes") {
     await db
-      .insert(notes)
-      .values({ userId, content, type: "todo" })
+      .insert(todos)
+      .values({ userId, content })
       .returning({ id: notes.id });
   } else if (todo === "no") {
     const noteId = await db
       .insert(notes)
-      .values({ userId, content, type: "note" })
+      .values({ userId, content })
       .returning({ id: notes.id });
 
     const splitter = RecursiveCharacterTextSplitter.fromLanguage("markdown", {
