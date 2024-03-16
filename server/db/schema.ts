@@ -22,5 +22,5 @@ export const todos = pgTable("todos", {
   createdAt: timestamp("created_at").notNull().defaultNow(),
   userId: varchar("user_id", { length: 256 }).notNull(),
   content: text("content").notNull(),
-  state: stateEnum("state"),
+  state: stateEnum("state").default("pending"),
 });
