@@ -5,7 +5,7 @@ import { eq } from "drizzle-orm";
 
 export default defineEventHandler(async (event) => {
   const bodySchema = z.object({
-    id: z.number(),
+    userId: z.string(),
   });
 
   const result = getQuery(event);
@@ -14,13 +14,15 @@ export default defineEventHandler(async (event) => {
     throw new Error("fail lol");
   }
 
+  console.log(result.userId);
+
   const parsedBodyResult = bodySchema.safeParse(result);
 
   if (!parsedBodyResult.success) {
     throw new Error("Invalid body format");
   }
 
-  const { id } = parsedBodyResult.data;
+  const { userId } = parsedBodyResult.data;
 
-  return await db.select().from(todos).where(eq(todos.id, id));
+  return await db.select().from(todos).where(eq(todos.userId, userId));
 });
