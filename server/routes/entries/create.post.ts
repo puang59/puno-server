@@ -87,5 +87,6 @@ export default eventHandler(async (event) => {
 
   return {
     status: 200,
+    todo,
   };
 });
