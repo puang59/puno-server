@@ -1,7 +1,7 @@
 # puno.lol
 ## a search engine for your life
 
-### Tech Stack
+### Backend Tech Stack
 - TypeScript
 - Nitro
 - LangChain
